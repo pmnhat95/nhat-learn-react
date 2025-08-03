@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../store/productsSlice';
+import { getProducts } from '../store/productsSlice';
 import { Row, Col, Spin } from 'antd';
 import ProductCard from './ProductCard';
 
@@ -9,7 +9,7 @@ export default function ProductList() {
   const { items, loading } = useSelector(state => state.products);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(getProducts());
   }, [dispatch]);
 
   if (loading) return <Spin size="large" />;
