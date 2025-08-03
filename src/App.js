@@ -1,16 +1,26 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import logo from './logo.svg';
 // import { Counter } from './features/counter/Counter';
-import { Typography, Divider } from 'antd';
+// import { Typography, Divider } from 'antd';
 import './App.css';
-import TodoList from './components/TodoList';
-import Filters from './components/Filters';
+// import TodoList from './components/TodoList';
+// import Filters from './components/Filters';
 
-const { Title } = Typography;
+// const { Title } = Typography;
+
+import ProductsPage from './pages/ProductsPage';
+import ProductDetailPage from './components/ProductDetail';
 
 function App() {
   return (
     <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ProductsPage />} />
+          <Route path="/product/:id" element={<ProductDetailPage />} />
+        </Routes>
+      </BrowserRouter>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
@@ -57,7 +67,7 @@ function App() {
         </span>
       </header> */}
       
-      <div
+      {/* <div
         style={{
           width: 500,
           margin: '0 auto',
@@ -74,7 +84,7 @@ function App() {
         <Filters />
         <Divider />
         <TodoList />
-      </div>
+      </div> */}
     </div>
   );
 }
