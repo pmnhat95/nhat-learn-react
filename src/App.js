@@ -11,6 +11,7 @@ import './App.css';
 
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './components/ProductDetail';
+import CartPage from './pages/CartPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ProductsPage />} />
           <Route path="/product/:id" element={<ProductDetailPage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </BrowserRouter>
       {/* <header className="App-header">

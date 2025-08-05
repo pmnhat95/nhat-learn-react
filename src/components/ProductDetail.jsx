@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector,useDispatch } from "react-redux";
-import { Spin, Typography, Row, Col, Image, Button, Space } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { Spin, Typography, Row, Col, Image, Button, Space, message } from "antd";
 import { addToCart } from "../store/cartSlice";
 import { getProductDetail, clearProductDetail } from '../store/productsSlice';
 
 export default function ProductDetailPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { detail, detailLoading } = useSelector(state => state.products);
+  const { detail, detailLoading, detailError } = useSelector(state => state.products);
 
   useEffect(() => {
     dispatch(getProductDetail(id));
@@ -16,6 +16,10 @@ export default function ProductDetailPage() {
       dispatch(clearProductDetail());
     };
   }, [dispatch, id]);
+
+  useEffect(() => {
+    if (detailError) message.error(detailError);
+  }, [detailError]);
 
   if (detailLoading) return <Spin size="large" />
 
