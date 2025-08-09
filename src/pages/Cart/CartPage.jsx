@@ -1,13 +1,13 @@
 import { Button, Table, Image } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { increaseQty, decreaseQty, removeFromCart } from '../store/cartSlice';
+import { increaseQty, decreaseQty, removeFromCart } from '../../store/cartSlice';
 import { Link } from 'react-router-dom';
+import { cartListSelector, cartTotalSelector } from '../../store/selectors';
 
 export default function CartPage() {
   const dispatch = useDispatch();
-  const { items } = useSelector(state => state.cart);
-  console.log(items)
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+  const cartItems = useSelector(cartListSelector);
+  const cartTotal = useSelector(cartTotalSelector);
 
   const columns = [
     {
@@ -55,10 +55,10 @@ export default function CartPage() {
       <Table
         rowKey="id"
         columns={columns}
-        dataSource={items}
+        dataSource={cartItems}
         pagination={false}
       />
-      <h2 style={{ marginTop: 20 }}>Tổng cộng: ${total}</h2>
+      <h2 style={{ marginTop: 20 }}>Tổng cộng: ${cartTotal}</h2>
       <Link to="/checkout">
         <Button type="primary">Tiến hành thanh toán</Button>
       </Link>

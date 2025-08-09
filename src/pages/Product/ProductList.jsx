@@ -1,7 +1,7 @@
-import ProductList from '../components/ProductList';
+import ProductList from '../../components/ProductList';
 import { Typography } from 'antd';
 
-export default function ProductsPage() {
+export default function ProductListPage() {
   return (
     <div>
       <Typography.Title level={2}>All Products</Typography.Title>

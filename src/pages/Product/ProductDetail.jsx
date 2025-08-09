@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Spin, Typography, Row, Col, Image, Button, Space, message } from "antd";
-import { addToCart } from "../store/cartSlice";
-import { getProductDetail, clearProductDetail } from '../store/productsSlice';
+import { addToCart } from "../../store/cartSlice";
+import { getProductDetail, clearProductDetail } from '../../store/productsSlice';
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -38,6 +38,7 @@ export default function ProductDetailPage() {
           <Button type="primary" onClick={() => dispatch(addToCart(detail))}>
             Add to Cart
           </Button>
+          <Link to={`/cart`}>Cart Page</Link>
         </Space>
       </Col>
     </Row>
