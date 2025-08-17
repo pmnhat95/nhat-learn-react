@@ -1,6 +1,12 @@
 import { createSelector } from "@reduxjs/toolkit";
 
+export const productItemsSelector = state => state.products.items;
 export const cartItemsSelector = state => state.cart.items;
+
+export const productCountSelector = createSelector(
+  productItemsSelector,
+  productItems => productItems.length
+);
 
 export const cartListSelector = createSelector(
   cartItemsSelector,

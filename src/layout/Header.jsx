@@ -39,22 +39,17 @@ const AppHeader = () => {
       <Link
         to="/"
         style={{
-          width: 200,
-          textAlign: 'center',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 8,
           fontWeight: 600,
           fontSize: 18,
           color: '#1890ff',
-          textDecoration: 'none'
+          textDecoration: 'none',
+          padding: '0 40px'
         }}
       >
         <HomeOutlined style={{ fontSize: 22, marginRight: 6 }} />
         <Typography.Text style={{ color: '#1890ff', fontWeight: 600, fontSize: 18 }}>Trang chủ</Typography.Text>
       </Link>
-      <Divider type="vertical" />
+      <Divider type="vertical" style={{marginRight: '40px'}} />
       <Menu
         mode="horizontal"
         selectedKeys={[location.pathname]}
@@ -63,7 +58,7 @@ const AppHeader = () => {
       />
       <Link
         type="text"
-        style={{marginRight: 20}}
+        style={{marginRight: 40}}
         to="/cart"
       >
         <Badge count={cartCount} size="small" offset={[5, -3]}>

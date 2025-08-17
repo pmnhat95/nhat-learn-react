@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Spin, Typography, Row, Col, Image, Button, Space, message } from "antd";
+import { Typography, Row, Col, Image, Button, Space, message } from "antd";
 import { addToCart } from "../../store/cartSlice";
 import { getProductDetail, clearProductDetail } from '../../store/productsSlice';
+import ProductDetailSkeleton from "../../components/Skeleton/ProductDetailSkeleton";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -21,7 +22,7 @@ export default function ProductDetailPage() {
     if (detailError) message.error(detailError);
   }, [detailError]);
 
-  if (detailLoading) return <Spin size="large" />
+  if (detailLoading) return <ProductDetailSkeleton />;
 
   if (!detail) return <Typography.Text>Sản phẩm không tồn tại.</Typography.Text>
 
@@ -38,7 +39,6 @@ export default function ProductDetailPage() {
           <Button type="primary" onClick={() => dispatch(addToCart(detail))}>
             Add to Cart
           </Button>
-          <Link to={`/cart`}>Cart Page</Link>
         </Space>
       </Col>
     </Row>

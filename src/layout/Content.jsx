@@ -6,6 +6,7 @@ import ProductListPage from '../pages/Product/ProductList';
 import ProductDetailPage from '../pages/Product/ProductDetail';
 import CartPage from '../pages/Cart/CartPage';
 import CheckoutPage from '../pages/Checkout/CheckoutPage';
+import AppBreadcrumb from './Breadcrumb';
 
 const { Content } = Layout;
 
@@ -51,6 +52,7 @@ const AppContent = () => {
         borderRadius: borderRadiusLG,
       }}
     >
+      <AppBreadcrumb />
       <Routes>
         {ROUTES.map(({ path, element }) => (
           <Route key={path} path={path} element={element} />

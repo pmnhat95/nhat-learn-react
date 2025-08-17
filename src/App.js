@@ -2,9 +2,7 @@
 import React, { useState } from 'react';
 import { Layout } from 'antd';
 import './App.css';
-import AppHeader from './layout/Header';
-import AppFooter from './layout/Footer';
-import AppContent from './layout/Content';
+import { AppHeader, AppFooter, AppContent } from './layout';
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
